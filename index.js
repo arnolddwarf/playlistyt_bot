@@ -6,7 +6,7 @@ import { MongoClient } from 'mongodb';
 
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
-const CHAT_ID = process.env.CHAT_ID;
+const CHAT_ID = process.env.CHAT_ID; // ID del chat donde quieres enviar los mensajes
 const MONGO_URI = process.env.MONGO_URI;
 const DB_NAME = 'youtubeBotDB';
 const COLLECTION_NAME = 'notifiedVideos';
