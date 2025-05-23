@@ -1,0 +1,44 @@
+services:
+  bot:
+    image: node:18
+    container_name: youtube-telegram-bot
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    environment:
+      TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
+      YOUTUBE_API_KEY: ${YOUTUBE_API_KEY}
+      CHAT_ID: ${CHAT_ID}
+      MONGO_URI: mongodb://mongo:27017/youtubeBotDB
+    depends_on:
+      - mongo
+    command: ["node", "index.js"]
+    labels:
+      com.centurylinklabs.watchtower.enable: false
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:7.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    labels:
+      com.centurylinklabs.watchtower.enable: false
+    restart: unless-stopped 
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: 'mongo'
+      ME_CONFIG_MONGODB_PORT: '27017'
+    links:
+      - mongo  
+
+volumes:
+  mongo-data:
