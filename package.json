@@ -1,15 +1,20 @@
 {
-  "name": "playlistyt_bot",
+  "name": "youtube-telegram-bot",
   "version": "1.0.0",
+  "main": "index.js",
   "type": "module",
-  "main": "api/webhook.js",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "node api/webhook.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "date-fns": "^3.0.0",
-    "mongodb": "^6.0.0",
+    "cron": "^3.1.7",
+    "date-fns": "^3.6.0",
+    "mongodb": "^6.8.0",
+    "node-cron": "^3.0.3",
     "node-fetch": "^3.3.2",
     "telegraf": "^4.16.3"
   }
